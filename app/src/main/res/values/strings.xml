@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NFCraft</string>
+    <string name="shortcut_read">Read a tag</string>
+    <string name="shortcut_write">Write a tag</string>
+    <string name="shortcut_tasks">Tasks</string>
+</resources>

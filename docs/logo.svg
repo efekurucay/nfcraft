@@ -1,0 +1,16 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="NFCraft">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B6BFF"/>
+      <stop offset="1" stop-color="#1E3FCC"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <!-- Contactless waves emanating from a tag dot -->
+  <g fill="none" stroke="#FFFFFF" stroke-linecap="round">
+    <circle cx="176" cy="256" r="26" fill="#FFFFFF" stroke="none"/>
+    <path d="M236 200 a80 80 0 0 1 0 112" stroke-width="26" opacity="0.95"/>
+    <path d="M286 170 a140 140 0 0 1 0 172" stroke-width="26" opacity="0.7"/>
+    <path d="M336 140 a200 200 0 0 1 0 232" stroke-width="26" opacity="0.45"/>
+  </g>
+</svg>

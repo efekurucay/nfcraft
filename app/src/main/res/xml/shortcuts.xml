@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="read"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_read"
+        android:shortcutShortLabel="@string/shortcut_read">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.nfcraft.app"
+            android:targetClass="com.nfcraft.app.MainActivity"
+            android:data="nfcraft://read" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="write"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_write"
+        android:shortcutShortLabel="@string/shortcut_write">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.nfcraft.app"
+            android:targetClass="com.nfcraft.app.MainActivity"
+            android:data="nfcraft://write" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="tasks"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_tasks"
+        android:shortcutShortLabel="@string/shortcut_tasks">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.nfcraft.app"
+            android:targetClass="com.nfcraft.app.MainActivity"
+            android:data="nfcraft://tasks" />
+    </shortcut>
+</shortcuts>
