@@ -1,5 +1,24 @@
 # NFCraft — status, gaps, and on-device verification
 
+## Verified on a device (2026-10-25)
+
+Tested on an Android phone with genuine tags, end to end:
+
+- **Chip identification** — NTAG213 (via GET_VERSION; storage byte = byte[6]) and
+  MIFARE Classic 1K (via ATQA/SAK) both identified correctly.
+- **Originality signature** — secp128r1 ECDSA verified on a genuine NXP NTAG213
+  ("verified (genuine NXP)"), pure-Kotlin, no crypto dependency.
+- **Write → read loop** — wrote a URI record to a factory-blank NTAG213 (raw CC +
+  NDEF TLV) and read it back decoded; `WRITE` ACK handling works on-device.
+- **Dump** — full page hex of the NTAG213, confirming the written CC/TLV bytes.
+- No crashes across the flow.
+
+Still device-dependent: ICODE public key / SLI-vs-SLIX split, DESFire dump on
+EV2, password/lock irreversibility, and HCE against an external reader.
+
+---
+
+
 The project compiles and builds a debug APK. Everything below is implemented
 against typed contracts but, where noted, cannot be verified without NFC
 hardware and real tags. Static analysis cannot observe tag execution.
