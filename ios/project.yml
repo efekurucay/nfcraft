@@ -1,0 +1,35 @@
+name: NFCraft
+options:
+  bundleIdPrefix: com.nfcraft
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+
+targets:
+  NFCraft:
+    type: application
+    platform: iOS
+    sources:
+      - NFCraft
+    info:
+      path: NFCraft/Info.plist
+      properties:
+        CFBundleDisplayName: NFCraft
+        CFBundleShortVersionString: "0.1.0"
+        CFBundleVersion: "1"
+        UILaunchScreen: {}
+        NFCReaderUsageDescription: "NFCraft uses NFC to read and write tags you hold to your phone."
+    entitlements:
+      path: NFCraft/NFCraft.entitlements
+      properties:
+        com.apple.developer.nfc.readersession.formats:
+          - NDEF
+          - TAG
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nfcraft.app
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: NO
