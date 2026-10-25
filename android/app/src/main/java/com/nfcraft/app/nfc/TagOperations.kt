@@ -51,12 +51,33 @@ class TagOperations(
             }
 
             val formatable = NdefFormatable.get(tag)
-                ?: throw NfcException(NfcException.NOT_WRITABLE, "Tag does not support NDEF")
-            formatable.connect()
+            if (formatable != null) {
+                formatable.connect()
+                try {
+                    if (lock) formatable.formatReadOnly(message) else formatable.format(message)
+                } finally {
+                    runCatching { formatable.close() }
+                }
+                return@of
+            }
+
+            // Factory-unformatted Type 2 tags (e.g. a blank NTAG) expose neither
+            // Ndef nor NdefFormatable here; write the CC + NDEF TLV directly with
+            // the raw page-level engine.
+            val io = NfcIoHelper(tag)
             try {
-                if (lock) formatable.formatReadOnly(message) else formatable.format(message)
+                io.connect()
+                val chip = chipIdentifier.identify(io).type
+                // Establish the capability container so the tag is recognized as
+                // NDEF afterwards, then write the message TLV.
+                tagWriter.format(io, chip)
+                when (val result = tagWriter.write(io, chip, message)) {
+                    is NfcResult.Failure -> throw NfcException(result.code, result.message)
+                    is NfcResult.Success -> Unit
+                }
+                if (lock) tagWriter.makeReadOnly(io, chip)
             } finally {
-                runCatching { formatable.close() }
+                io.close()
             }
         }
 

@@ -58,11 +58,12 @@ class TagReader(private val activity: Activity) {
     }
 
     private companion object {
+        // No SKIP_NDEF_CHECK: the platform NDEF detection populates the Ndef
+        // technology, so a formatted tag's NDEF message is readable via Ndef.get.
         const val READER_FLAGS = NfcAdapter.FLAG_READER_NFC_A or
             NfcAdapter.FLAG_READER_NFC_B or
             NfcAdapter.FLAG_READER_NFC_F or
             NfcAdapter.FLAG_READER_NFC_V or
-            NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK or
             NfcAdapter.FLAG_READER_NO_PLATFORM_SOUNDS
         const val PRESENCE_CHECK_DELAY = 250
         const val DEBOUNCE_MS = 1000
